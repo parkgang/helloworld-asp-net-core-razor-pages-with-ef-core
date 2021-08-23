@@ -25,6 +25,7 @@ namespace HelloworldAspNetCoreRazorPagesWithEfCore
             try
             {
                 var context = services.GetRequiredService<SchoolContext>();
+                // 컨텍스트의 데이터베이스가 있는 경우 아무 작업도 수행하지 않습니다. 데이터베이스가 없는 경우 데이터베이스 및 스키마를 만듭니다.
                 context.Database.EnsureCreated();
                 // DbInitializer.Initialize(context);
             }
