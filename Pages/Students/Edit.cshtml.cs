@@ -27,7 +27,7 @@ namespace HelloworldAspNetCoreRazorPagesWithEfCore.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Student.FirstOrDefaultAsync(m => m.ID == id);
+            Student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Student == null)
             {
@@ -68,7 +68,7 @@ namespace HelloworldAspNetCoreRazorPagesWithEfCore.Pages.Students
 
         private bool StudentExists(int id)
         {
-            return _context.Student.Any(e => e.ID == id);
+            return _context.Students.Any(e => e.ID == id);
         }
     }
 }
