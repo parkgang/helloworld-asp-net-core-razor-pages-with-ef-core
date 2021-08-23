@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using HelloworldAspNetCoreRazorPagesWithEfCore.Data;
 
 namespace HelloworldAspNetCoreRazorPagesWithEfCore
 {
@@ -19,6 +21,10 @@ namespace HelloworldAspNetCoreRazorPagesWithEfCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            #region EF Core
+            services.AddDbContext<SchoolContext>(options => options.UseSqlite(Configuration.GetConnectionString("SchoolContext")));
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
