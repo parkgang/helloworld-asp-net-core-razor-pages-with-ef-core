@@ -23,7 +23,10 @@ namespace HelloworldAspNetCoreRazorPagesWithEfCore
             services.AddRazorPages();
 
             #region EF Core
+            // 로컬 개발의 경우 ASP.NET Core 구성 시스템은 appsettings.json 파일에서 연결 문자열을 읽어서 종속성 주입에 등록합니다.
             services.AddDbContext<SchoolContext>(options => options.UseSqlite(Configuration.GetConnectionString("SchoolContext")));
+            // [Entity Framework Core 오류 페이지에 대한 ASP.NET Core 미들웨어를 제공합니다. 즉, 개발 환경에서 유용한 오류 정보를 제공합니다.](https://docs.microsoft.com/ko-kr/aspnet/core/data/ef-rp/intro?view=aspnetcore-5.0&tabs=visual-studio-code#add-the-database-exception-filter)
+            services.AddDatabaseDeveloperPageExceptionFilter();
             #endregion
         }
 
